@@ -8,3 +8,4 @@ RAG pipelines re commonly used to reduce hallucinations and enable LLMs to work 
 
 ##Current Status
 - Repo Initialized
+- Project Structure Created
