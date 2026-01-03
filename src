@@ -25,11 +25,10 @@ def retrieve_context(query, doc_embedding, document):
 import requests
 
 def ask_llm(context, question):
-  prompt = f"
-Use the following context to answer the question.
+  prompt = f"""Use the following context to answer the question.
 
 Context:
-(context)
+{context}
 
 Question:
 {question}
@@ -42,15 +41,14 @@ Question:
       "prompt": prompt,
       "stream": False
     }
-)
+  )
 
-return response.json()["response"]
+  return response.json()["response"]
 
 if __name__ == "__main__":
-  main()
-  question = "What is Retrieval-Augmented Genertion?"
+  question = "What is Retrieval-Augmented Generation?"
 
-  context = retreive_context(question, doc_embedding, document)
+  context = retrieve_context(question, doc_embedding, document)
   answer = ask_llm(context, question)
 
   print("Answer:\n", answer)
