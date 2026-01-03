@@ -4,7 +4,7 @@ from sentence_transformers import SentenceTransformer
 import numpy as np
 
 #Load the embedding model
-embedder = SentenceTransformer("phi4:latest")
+embedder = SentenceTransformer("all-MiniLM-L6-v2")
 
 #Load Document
 with open ("sample_doc.txt", "r") as f:
@@ -16,20 +16,20 @@ doc_embedding = embedder.encode(document)
 def retrieve_context(query, doc_embedding, document):
   query_embedding = embedder.encode(query)
 
-similarity = np.dot(query_embedding, doc_embedding) / (
-  np.linalg.norm(query_embedding) * np.linalg.norm(doc_embedding)
-)
+  similarity = np.dot(query_embedding, doc_embedding) / (
+    np.linalg.norm(query_embedding) * np.linalg.norm(doc_embedding)
+  )
 
-return dicument if similarity > 0.2 else ""
+  return document if similarity > 0.2 else ""
 
 import requests
 
-def ask_llm(context, queston):
-  prompt = f""
+def ask_llm(context, question):
+  prompt = f"
 Use the following context to answer the question.
 
 Context:
-(Context)
+(context)
 
 Question:
 {question}
@@ -38,15 +38,16 @@ Question:
   response = requests.post(
     "http://localhost:11434/api/generate",
     json={
-      "model": "phi4:latest"
-      "prompt": promopt,
+      "model": "phi4:latest",
+      "prompt": prompt,
       "stream": False
     }
 )
 
 return response.json()["response"]
 
-if__name__=="__main__":
+if __name__ == "__main__":
+  main()
   question = "What is Retrieval-Augmented Genertion?"
 
   context = retreive_context(question, doc_embedding, document)
