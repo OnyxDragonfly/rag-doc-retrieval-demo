@@ -9,3 +9,10 @@ RAG pipelines re commonly used to reduce hallucinations and enable LLMs to work 
 ##Current Status
 - Repo Initialized
 - Project Structure Created
+
+
+## Day 2 Progress
+- Implemented basic document embedding
+- Added similarity-based retrieval
+- Injected retieved context into LLM prompts
+- Successfully answered quesries using grounded data
