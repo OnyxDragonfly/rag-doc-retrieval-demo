@@ -7,7 +7,7 @@ import numpy as np
 embedder = SentenceTransformer("all-MiniLM-L6-v2")
 
 #Load Document
-with open ("sample_doc.txt", "r") as f:
+doc_path = here.parent / "data" / "sample_doc.txt"
   document = f.read()
 
 #Create embedding
