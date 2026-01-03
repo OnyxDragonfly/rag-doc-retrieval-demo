@@ -7,4 +7,8 @@ import numpy as np
 embedder = SentenceTransformer("phi4:latest")
 
 #Load Document
-with open ("..
+with open ("sample_doc.txt", "r") as f:
+  document = f.read()
+
+#Create embedding
+doc_embedding = embedder.encode(document)
