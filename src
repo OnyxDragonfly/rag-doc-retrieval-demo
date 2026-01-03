@@ -1,4 +1,4 @@
-rag_basic.py
+##rag_basic.py
 
 from sentence_transformers import SentenceTransformer
 import numpy as np
